@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getByIdReactionController = exports.getAllController = exports.createReactionController = exports.getByIdReactionUseCase = exports.getAllUseCase = exports.createReactionUseCase = exports.mysqlReactionsRepository = void 0;
+const MysqlReactionsRepository_1 = require("./MysqlReactionsRepository");
+const CreateReactionUseCase_1 = require("../application/CreateReactionUseCase");
+const GetByIReactionUseCase_1 = require("../application/GetByIReactionUseCase");
+const GetAllUseCase_1 = require("../application/GetAllUseCase");
+const CreateReactionController_1 = require("./controllers/CreateReactionController");
+const GetAllController_1 = require("./controllers/GetAllController");
+const GetByIdReactionController_1 = require("./controllers/GetByIdReactionController");
+exports.mysqlReactionsRepository = new MysqlReactionsRepository_1.MysqlReactionsRepository();
+exports.createReactionUseCase = new CreateReactionUseCase_1.CreateReactionUseCase(exports.mysqlReactionsRepository);
+exports.getAllUseCase = new GetAllUseCase_1.GetAllUseCase(exports.mysqlReactionsRepository);
+exports.getByIdReactionUseCase = new GetByIReactionUseCase_1.GetByIdReactionUseCase(exports.mysqlReactionsRepository);
+exports.createReactionController = new CreateReactionController_1.CreateReactionController(exports.createReactionUseCase);
+exports.getAllController = new GetAllController_1.GetAllReactionsController(exports.getAllUseCase);
+exports.getByIdReactionController = new GetByIdReactionController_1.GetByIdReactionController(exports.getByIdReactionUseCase);
